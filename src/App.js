@@ -1,29 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: 'Lucas Onazes'
-    };
+  state = {
+    posts: [
+      {
+        id: 1,
+        title: 'The first title',
+        body: 'The first body'
+      },
+      {
+        id: 2,
+        title: 'The second title',
+        body: 'The second body'
+      },
+      {
+        id: 3,
+        title: 'The third title',
+        body: 'The third body'
+      },
+    ]
   }
 
   render() {
-    const { name } = this.state;
+    const { posts } = this.state;
 
     return (
       <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {name}
-        </p>
-      </header>
-    </div>
+        {posts.map(post => (
+          <div className='post' key={post.id}>
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
     );
   }
 }
