@@ -16,12 +16,11 @@ export const Home = () => {
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
 
-  const filteredPosts = !!searchValue ? 
-  allPosts.filter(post => {
-    return post.title.toLowerCase().includes(searchValue.toLowerCase());
-  })
-  : 
-  posts;
+  const filteredPosts = !searchValue
+    ? allPosts.filter((post) => {
+        return post.title.toLowerCase().includes(searchValue.toLowerCase());
+      })
+    : posts;
 
   const handleLoadPosts = useCallback(async (page, postsPerPage) => {
     const postsAndPhotos = await loadPosts();
@@ -41,12 +40,12 @@ export const Home = () => {
 
     setPosts(posts);
     setPage(nextPage);
-  }
+  };
 
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchValue(value);
-  }
+  };
 
   return (
     <section className='container'>
@@ -69,7 +68,7 @@ export const Home = () => {
       <div className='button-container'>
         {!searchValue && (
           <Button
-            text='Load more posts' 
+            text='Load more posts'
             onClick={loadMorePosts}
             disabled={noMorePosts}
           />
@@ -77,7 +76,7 @@ export const Home = () => {
       </div>
     </section>
   );
-}
+};
 
 //
 // Same component, but with class
@@ -102,7 +101,7 @@ export class Home2 extends Component {
     const { page, postsPerPage } = this.state;
 
     const postsAndPhotos = await loadPosts();
-    this.setState({ 
+    this.setState({
       posts: postsAndPhotos.slice(page, postsPerPage),
       allPosts: postsAndPhotos,
     });
@@ -127,11 +126,11 @@ export class Home2 extends Component {
     const { posts, allPosts, page, postsPerPage, searchValue } = this.state;
     const noMorePosts = page + postsPerPage >= allPosts.length;
 
-    const filteredPosts = !!searchValue ? 
+    const filteredPosts = !!searchValue ?
     allPosts.filter(post => {
       return post.title.toLowerCase().includes(searchValue.toLowerCase());
     })
-    : 
+    :
     posts;
 
     return (
@@ -155,7 +154,7 @@ export class Home2 extends Component {
         <div className='button-container'>
           {!searchValue && (
             <Button
-              text='Load more posts' 
+              text='Load more posts'
               onClick={this.loadMorePosts}
               disabled={noMorePosts}
             />
