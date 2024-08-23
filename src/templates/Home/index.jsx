@@ -28,10 +28,9 @@ export const Home = () => {
 
     setPosts(postsAndPhotos.slice(page, postsPerPage));
     setAllPosts(postsAndPhotos);
-  }, [])
+  }, []);
 
   useEffect(() => {
-    console.log(new Date().toLocaleDateString('pt-br'));
     handleLoadPosts(0, postsPerPage);
   }, [handleLoadPosts, postsPerPage]);
 
