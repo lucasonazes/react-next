@@ -7,7 +7,7 @@ describe('<Button />', () => {
     // jest.fn generates a mock function
     const fn = jest.fn();
 
-    render(<Button text="Load more" onClick={fn}/>);
+    render(<Button text="Load more" onClick={fn} />);
 
     const button = screen.getByRole('button', { name: /load more/i });
 
@@ -15,5 +15,5 @@ describe('<Button />', () => {
     userEvent.click(button);
 
     expect(fn).toHaveBeenCalledTimes(1);
-  })
+  });
 });

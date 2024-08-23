@@ -48,31 +48,19 @@ export const Home = () => {
   };
 
   return (
-    <section className='container'>
-      <div className='search-container'>
-        {!!searchValue && (
-          <h1>Searching for: {searchValue}</h1>
-        )}
+    <section className="container">
+      <div className="search-container">
+        {!!searchValue && <h1>Searching for: {searchValue}</h1>}
 
-        <TextInput searchValue={searchValue} handleChange={handleChange}/>
+        <TextInput searchValue={searchValue} handleChange={handleChange} />
       </div>
 
-      {filteredPosts.length > 0 && (
-        <Posts posts={filteredPosts} />
-      )}
+      {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
 
-      {filteredPosts.length === 0 && (
-        <p>Post not found =(</p>
-      )}
+      {filteredPosts.length === 0 && <p>Post not found =(</p>}
 
-      <div className='button-container'>
-        {!searchValue && (
-          <Button
-            text='Load more posts'
-            onClick={loadMorePosts}
-            disabled={noMorePosts}
-          />
-        )}
+      <div className="button-container">
+        {!searchValue && <Button text="Load more posts" onClick={loadMorePosts} disabled={noMorePosts} />}
       </div>
     </section>
   );
